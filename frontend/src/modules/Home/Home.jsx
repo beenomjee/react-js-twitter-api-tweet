@@ -62,7 +62,7 @@ const Home = () => {
 
     useEffect(() => {
         if (!localStorage.getItem('loginInfo'))
-            navigate('/', { replace: true });
+            navigate('/login', { replace: true });
         else
             setIsLoading(false);
 
