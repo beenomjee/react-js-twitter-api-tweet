@@ -1,0 +1,21 @@
+@import "../../styles";
+
+.container {
+  @include center();
+  min-height: 100vh;
+
+  & > button {
+    background-color: $link;
+    @include font(1.4rem, 500);
+    text-transform: uppercase;
+    padding: 8px 30px;
+    border: none;
+    outline: none;
+    color: rgba($color: $light-gray, $alpha: 0.7);
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

@@ -2,8 +2,8 @@ import Twit from "twit";
 
 export const makeNewTweet = async (req, res) => {
   try {
-    const { image, message } = req.body;
-    if (!image || !message)
+    const { image, message, secret, token } = req.body;
+    if (!image || !message || !secret || !token)
       return res.status(400).json({ message: "All fields are required!" });
 
     let iamgeWithoutHeader = image.split(";base64,").pop();
@@ -11,8 +11,8 @@ export const makeNewTweet = async (req, res) => {
     const T = new Twit({
       consumer_key: process.env.API_KEY,
       consumer_secret: process.env.API_KEY_SECRET,
-      access_token: process.env.ACCESS_TOKEN,
-      access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+      access_token: token,
+      access_token_secret: secret,
     });
 
     const { data: mediaData } = await T.post("media/upload", {
