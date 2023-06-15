@@ -29,7 +29,7 @@ const Home = () => {
                 return onLogout();
             }
 
-            const { data } = await axios.post('http://localhost:3001/api/v1/tweet', {
+            const { data } = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/v1/tweet', {
                 message,
                 image,
                 secret,
